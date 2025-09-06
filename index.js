@@ -9,3 +9,11 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
 });
+
+// describe("GET /", () => {
+//   it("should return Hello World", async () => {
+//     const response = await request(app).get("/");
+//     expect(response.text).toBe("Hello World!");
+//     expect(response.status).toBe(200);
+//   });
+// });
