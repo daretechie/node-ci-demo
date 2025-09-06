@@ -1,0 +1,16 @@
+{
+  "name": "ci-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "Daretechie",
+  "license": "ISC",
+  "description": "A simple Node.js project to demonstrate CI/CD with GitHub Actions, Docker, and AWS.",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Running tests...\" && exit 0"
+  }
+}
