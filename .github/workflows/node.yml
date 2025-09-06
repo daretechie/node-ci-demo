@@ -28,26 +28,26 @@ jobs:
       - name: Run tests
         run: npm test
 
-deploy:
-  needs: build
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Setup SSH
-      uses: webfactory/ssh-agent@v0.5.3
-      with:
-        ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
 
-    - name: Deploy to EC2
-      run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
-          docker stop node-ci-demo || true
-          docker rm node-ci-demo || true
-          docker rmi node-ci-demo || true
-          cd ~/app || mkdir ~/app && cd ~/app
-          git clone https://github.com/${{ github.repository }} . || git pull
-          docker build -t node-ci-demo .
-          docker run -d -p 3000:3000 --name node-ci-demo node-ci-demo
-          EOF
+      - name: Deploy to EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+            docker stop node-ci-demo || true
+            docker rm node-ci-demo || true
+            docker rmi node-ci-demo || true
+            cd ~/app || mkdir ~/app && cd ~/app
+            git clone https://github.com/${{ github.repository }} . || git pull
+            docker build -t node-ci-demo .
+            docker run -d -p 3000:3000 --name node-ci-demo node-ci-demo
+            EOF
