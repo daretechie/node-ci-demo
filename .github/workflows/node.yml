@@ -42,7 +42,7 @@ jobs:
 
       - name: Deploy to EC2
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+          ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} <<'EOF'
             sudo docker stop node-ci-demo || true
             sudo docker rm node-ci-demo || true
             sudo docker rmi node-ci-demo || true
@@ -50,4 +50,4 @@ jobs:
             git clone https://github.com/${{ github.repository }} . || git pull
             sudo docker build -t node-ci-demo .
             sudo docker run -d -p 3000:3000 --name node-ci-demo node-ci-demo
-            EOF
+          EOF
