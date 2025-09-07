@@ -1,4 +1,4 @@
-# ci-demo
+# Node-ci-demo
 
 A simple Node.js project to demonstrate CI/CD with GitHub Actions, Docker, and AWS.
 
@@ -57,14 +57,14 @@ The application will be available at [http://localhost:3000](http://localhost:30
 This project is configured with a CI/CD pipeline using GitHub Actions. The workflow is defined in `.github/workflows/node.yml`.
 
 The pipeline includes the following jobs:
--   **build**: Installs dependencies and runs tests for different Node.js versions.
--   **deploy**: Deploys the application to an AWS EC2 instance using Docker.
+
+- **build**: Installs dependencies and runs tests for different Node.js versions.
+- **deploy**: Deploys the application to an AWS EC2 instance using Docker.
 
 The deployment process involves:
+
 1.  Connecting to the EC2 instance via SSH.
 2.  Stopping and removing any existing Docker containers.
 3.  Pulling the latest code from the GitHub repository.
 4.  Building a new Docker image.
 5.  Running a new Docker container with the updated image.
-
-
