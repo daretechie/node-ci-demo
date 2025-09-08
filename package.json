@@ -10,7 +10,7 @@
     "express": "^4.19.2"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "test": "jest"
   },
   "devDependencies": {
@@ -21,4 +21,3 @@
     "supertest": "^6.3.4"
   }
 }
-
